@@ -1,0 +1,38 @@
+<head>
+    <title>Guvi JS Day 7</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <h2>This is an example for XML HTTP Request</h2>
+    <script>
+        console.log("Welcome to HTML JS")
+
+        function handleData(){
+            let data= JSON.parse(this.responseText)
+            console.log(data)
+
+           let popu=data.map((e)=>e.population);
+           console.log(popu);
+           let sumpop=popu.reduce(calculation,0);
+           function calculation(previousValue,currentValue){
+               return previousValue+currentValue;
+           
+           }console.log(sumpop)
+            
+        
+        }
+          
+                   
+const req = new XMLHttpRequest();
+        req.addEventListener('load',handleData)
+        //or
+        //req.onload = (res)=>{
+            //console.log(JSON.parse(res.srcElement.responseText))
+       // }
+
+        
+        req.open("GET","https://restcountries.com/v3.1/all")
+        req.send()
+    </script>
+</body>
+</html>
